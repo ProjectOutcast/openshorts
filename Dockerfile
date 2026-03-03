@@ -60,5 +60,5 @@ RUN python -c "from ultralytics import YOLO; YOLO('yolov8n.pt')"
 # Expose FastAPI port
 EXPOSE 8000
 
-# Run FastAPI app
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run FastAPI app — use $PORT if set (Railway), else 8000
+CMD uvicorn app:app --host 0.0.0.0 --port ${PORT:-8000}
